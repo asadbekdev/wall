@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "403733991988",
+    "project_id": "wall-9f20f",
+    "storage_bucket": "wall-9f20f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:403733991988:android:8bc1e4b33e729322d27061",
+        "android_client_info": {
+          "package_name": "com.socialwall.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "403733991988-4u0fqc85mqnhs1cjbth5ugclb3v7n4n4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxLuZfXKsLATYx33_IE20i3PGsTiHzpyQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "403733991988-4u0fqc85mqnhs1cjbth5ugclb3v7n4n4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "403733991988-9n11nmnb5n8qh1cj7cpqfve8k9l5mfg7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.wall"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
