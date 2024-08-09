@@ -13,7 +13,7 @@ class AuthPage extends StatelessWidget {
         listener: (context, state) {
           if (state is Authenticated) {
             Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (_) => const WallPage()),
+              MaterialPageRoute(builder: (_) => WallPage()),
             );
           } else if (state is AuthError) {
             ScaffoldMessenger.of(context).showSnackBar(

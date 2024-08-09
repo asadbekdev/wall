@@ -21,6 +21,7 @@ class FirestorePostRepository implements IPostFacade {
           id: doc.id,
           userId: data['userId'],
           userName: data['userName'],
+          userPhotoUrl: data['userPhotoUrl'],
           content: data['content'],
           timestamp: (data['timestamp'] as Timestamp).toDate(),
         );
@@ -52,6 +53,7 @@ class FirestorePostRepository implements IPostFacade {
           id: doc.id,
           userId: data['userId'],
           userName: data['userName'],
+          userPhotoUrl: data['userPhotoUrl'],
           content: data['content'],
           timestamp: (data['timestamp'] as Timestamp).toDate(),
         );

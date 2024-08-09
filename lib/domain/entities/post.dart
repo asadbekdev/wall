@@ -4,6 +4,7 @@ class Post extends Equatable {
   final String id;
   final String userId;
   final String userName;
+  final String userPhotoUrl;
   final String content;
   final DateTime timestamp;
 
@@ -11,6 +12,7 @@ class Post extends Equatable {
     required this.id,
     required this.userId,
     required this.userName,
+    required this.userPhotoUrl,
     required this.content,
     required this.timestamp,
   });
