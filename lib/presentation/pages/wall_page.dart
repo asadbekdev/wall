@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:wall/application/auth/auth_bloc.dart';
 import 'package:wall/application/post/post_bloc.dart';
 import 'package:wall/data/models/post_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wall/presentation/pages/auth_page.dart';
 import 'package:wall/presentation/widgets/post_card.dart';
 
 class WallPage extends StatefulWidget {
@@ -15,46 +17,55 @@ class _WallPageState extends State<WallPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[100], // Light grey background
-      appBar: AppBar(
-        title: const Text('Wall', style: TextStyle(fontSize: 24)),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () {
-              // Implement logout functionality
-              FirebaseAuth.instance.signOut();
-              // Navigate to login page
-            },
-          ),
-        ],
-      ),
-      body: Column(
-        children: [
-          _buildPostInput(),
-          const Divider(color: Colors.black, height: 1),
-          Expanded(
-            child: BlocBuilder<PostBloc, PostState>(
-              builder: (context, state) {
-                if (state is PostLoading) {
-                  return const Center(child: CircularProgressIndicator());
-                } else if (state is PostLoaded) {
-                  return ListView.builder(
-                    itemCount: state.posts.length,
-                    itemBuilder: (context, index) {
-                      return PostCard(post: state.posts[index]);
-                    },
-                  );
-                } else if (state is PostError) {
-                  return Center(child: Text(state.message));
-                }
-                return const Center(child: Text('No posts yet'));
+    return BlocListener<AuthBloc, AuthState>(
+      listener: (BuildContext context, AuthState state) {
+        if (state is Unauthenticated) {
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (_) => const AuthPage()),
+          );
+        }
+      },
+      child: Scaffold(
+        backgroundColor: Colors.grey[100], // Light grey background
+        appBar: AppBar(
+          title: const Text('Wall', style: TextStyle(fontSize: 24)),
+          centerTitle: true,
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.logout),
+              onPressed: () {
+                // Implement logout functionality
+                FirebaseAuth.instance.signOut();
+                // Navigate to login page
               },
             ),
-          ),
-        ],
+          ],
+        ),
+        body: Column(
+          children: [
+            _buildPostInput(),
+            const Divider(color: Colors.black, height: 1),
+            Expanded(
+              child: BlocBuilder<PostBloc, PostState>(
+                builder: (context, state) {
+                  if (state is PostLoading) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else if (state is PostLoaded) {
+                    return ListView.builder(
+                      itemCount: state.posts.length,
+                      itemBuilder: (context, index) {
+                        return PostCard(post: state.posts[index]);
+                      },
+                    );
+                  } else if (state is PostError) {
+                    return Center(child: Text(state.message));
+                  }
+                  return const Center(child: Text('No posts yet'));
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -106,9 +117,8 @@ class _WallPageState extends State<WallPage> {
     if (_postController.text.isNotEmpty) {
       final user = FirebaseAuth.instance.currentUser;
       if (user != null) {
-        print(user.photoURL.toString());
         final newPost = PostModel(
-          id: '', // Firestore will generate this
+          id: '',
           userId: user.uid,
           userName: user.displayName ?? 'Anonymous',
           userPhotoUrl: user.photoURL,
