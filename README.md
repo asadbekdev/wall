@@ -1,6 +1,6 @@
-Certainly! Here's a README.md file for your GitHub repository that describes the Social Wall Flutter project:
 
-```markdown
+![Social Wall App Screenshot](flutter_01.png)
+
 # Social Wall - Flutter App
 
 ## Overview
@@ -13,7 +13,6 @@ Social Wall is a simplified social media application built with Flutter and Fire
 - Real-time post updates
 - Ability to create text posts
 - View posts from all users
-- Responsive UI design
 
 ## Technologies Used
 
