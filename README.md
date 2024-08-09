@@ -60,49 +60,8 @@ Social Wall is a simplified social media application built with Flutter and Fire
    flutter run
    ```
 
-## Project Structure
-
-```
-lib/
-  ├── data/
-  │   ├── models/
-  │   └── repositories/
-  ├── presentation/
-  │   ├── blocs/
-  │   ├── pages/
-  │   └── widgets/
-  ├── core/
-  │   ├── constants/
-  │   └── utils/
-  └── main.dart
-```
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
-## Acknowledgments
-
-- Flutter team for the excellent framework
-- Firebase for providing robust backend services
-
-```
-
-This README provides:
-
-1. An overview of the project
-2. Key features
-3. Technologies used
-4. Installation and setup instructions
-5. Project structure
-6. Information for contributors
-7. License information
-8. Acknowledgments
-
-You may want to customize this README further based on specific details of your implementation, any additional features you've added, or particular setup instructions that are unique to your project.
-
-Remember to create a LICENSE.md file if you mention it in the README, choosing an appropriate open-source license for your project.
